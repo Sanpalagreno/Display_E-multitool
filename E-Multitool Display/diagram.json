@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "parts": [
+    { "type": "board-esp32-s3-devkitc-1", "id": "esp", "top": 0, "left": 0 },
+    { "type": "wokwi-pushbutton", "id": "trigger", "top": 40, "left": 220, "attrs": { "color": "green", "label": "Trigger" } },
+    { "type": "wokwi-buzzer", "id": "buzzer", "top": 130, "left": 230 },
+    { "type": "wokwi-led", "id": "laser", "top": 230, "left": 240, "attrs": { "color": "red" } },
+    { "type": "wokwi-resistor", "id": "r1", "top": 280, "left": 190, "attrs": { "value": "220" } },
+    { "type": "wokwi-potentiometer", "id": "battery", "top": 0, "left": -180, "attrs": { "value": "0.6" } },
+    { "type": "wokwi-ky-040", "id": "wheel", "top": 150, "left": -200 },
+    { "type": "wokwi-ili9341", "id": "lcd", "top": -320, "left": 0 }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "trigger:1.l", "esp:2", "green", [] ],
+    [ "trigger:2.l", "esp:GND.1", "black", [] ],
+    [ "buzzer:2", "esp:13", "orange", [] ],
+    [ "buzzer:1", "esp:GND.1", "black", [] ],
+    [ "esp:7", "r1:1", "red", [] ],
+    [ "r1:2", "laser:A", "red", [] ],
+    [ "laser:C", "esp:GND.1", "black", [] ],
+    [ "battery:VCC", "esp:3V3.1", "red", [] ],
+    [ "battery:GND", "esp:GND.1", "black", [] ],
+    [ "battery:SIG", "esp:1", "blue", [] ],
+    [ "wheel:CLK", "esp:4", "purple", [] ],
+    [ "wheel:DT", "esp:5", "violet", [] ],
+    [ "wheel:SW", "esp:3", "gray", [] ],
+    [ "wheel:VCC", "esp:3V3.1", "red", [] ],
+    [ "wheel:GND", "esp:GND.1", "black", [] ],
+    [ "lcd:VCC", "esp:3V3.1", "red", [] ],
+    [ "lcd:GND", "esp:GND.1", "black", [] ],
+    [ "lcd:CS", "esp:GND.1", "black", [] ],
+    [ "lcd:RST", "esp:3V3.1", "red", [] ],
+    [ "lcd:D/C", "esp:14", "green", [] ],
+    [ "lcd:MOSI", "esp:11", "blue", [] ],
+    [ "lcd:SCK", "esp:12", "orange", [] ],
+    [ "lcd:LED", "esp:10", "yellow", [] ]
+  ]
+}
